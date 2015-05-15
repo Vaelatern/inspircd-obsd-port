@@ -1,0 +1,22 @@
+$OpenBSD$
+--- src/socket.cpp.orig	Fri May  8 04:33:44 2015
++++ src/socket.cpp	Mon May 11 03:03:26 2015
+@@ -223,7 +223,7 @@ std::string irc::sockets::sockaddrs::str() const
+ 	if (sa.sa_family == AF_INET)
+ 	{
+ 		const uint8_t* bits = reinterpret_cast<const uint8_t*>(&in4.sin_addr);
+-		sprintf(buffer, "%d.%d.%d.%d:%u", bits[0], bits[1], bits[2], bits[3], ntohs(in4.sin_port));
++		snprintf(buffer, MAXBUF, "%d.%d.%d.%d:%u", bits[0], bits[1], bits[2], bits[3], ntohs(in4.sin_port));
+ 	}
+ 	else if (sa.sa_family == AF_INET6)
+ 	{
+@@ -232,7 +232,8 @@ std::string irc::sockets::sockaddrs::str() const
+ 			return "<unknown>"; // should never happen, buffer is large enough
+ 		int len = strlen(buffer);
+ 		// no need for snprintf, buffer has at least 9 chars left, max short len = 5
+-		sprintf(buffer + len, "]:%u", ntohs(in6.sin6_port));
++		// I am writing an OpenBSD Port. I disagree. But just that it's worth the time optimization.
++		snprintf(buffer + len, MAXBUF-len, "]:%u", ntohs(in6.sin6_port));
+ 	}
+ 	else
+ 		return "<unknown>";

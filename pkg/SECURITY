@@ -1,0 +1,24 @@
+$OpenBSD$
+
+${WRKDIR}/dns.cpp
+	The call to strcpy is safe in the context because it copies
+	a statically formatted string to the memory location.
+	To fix it would also involve introducing a magic number.
+
+Fixed a bunch of calls to sprintf().
+	Some were okay. Fixed them anyway.
+
+
+There were a bunch of build warnings that all included the below.
+In file included from /usr/include/g++/iosfwd:45,
+                 from /usr/include/g++/bits/stl_algobase.h:70,
+                 from /usr/include/g++/algorithm:65,
+                 from include/inspircd.h:53,
+/usr/include/g++/amd64-unknown-openbsd5.6/bits/c++locale.h: In function 'int std::__convert_from_v(int* const&, char*, int, const char*, ...)':
+/usr/include/g++/amd64-unknown-openbsd5.6/bits/c++locale.h:81: warning: function might be possible candidate for 'printf' format attribute
+
+There is also a file specific line which changes depending on where 
+inspircd.h was included.
+These warnings were ignored.
+
+

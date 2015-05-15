@@ -1,0 +1,12 @@
+$OpenBSD$
+--- src/dns.cpp.orig	Fri May  8 04:27:10 2015
++++ src/dns.cpp	Fri May  8 04:31:25 2015
+@@ -528,7 +528,7 @@ int DNS::GetNameForce(const char *ip, ForceProtocol fp
+ 		if (inet_aton(ip, &i))
+ 		{
+ 			unsigned char* c = (unsigned char*)&i.s_addr;
+-			sprintf(query,"%d.%d.%d.%d.in-addr.arpa",c[3],c[2],c[1],c[0]);
++			snprintf(query,128,"%d.%d.%d.%d.in-addr.arpa",c[3],c[2],c[1],c[0]);
+ 		}
+ 		else
+ 		{

@@ -1,0 +1,36 @@
+$OpenBSD$
+--- src/inspircd.cpp.orig	Thu Apr 16 17:17:02 2015
++++ src/inspircd.cpp	Fri May 15 02:10:16 2015
+@@ -414,7 +414,8 @@ InspIRCd::InspIRCd(int argc, char** argv) :
+ 		g_wBackgroundColor = 0;
+ 	}
+ #else
+-	srandom(TIME.tv_nsec ^ TIME.tv_sec);
++// Not necessary under OpenBSD.
++//	srandom(TIME.tv_nsec ^ TIME.tv_sec);
+ #endif
+ 
+ 	struct option longopts[] =
+@@ -576,7 +577,7 @@ InspIRCd::InspIRCd(int argc, char** argv) :
+ 			sid = 5 * sid + *x;
+ 		for (const char* y = Config->ServerDesc.c_str(); *y; ++y)
+ 			sid = 5 * sid + *y;
+-		sprintf(sidstr, "%03d", sid % 1000);
++		snprintf(sidstr, 4, "%03d", sid % 1000);
+ 
+ 		Config->sid = sidstr;
+ 	}
+@@ -814,11 +815,11 @@ int InspIRCd::Run()
+ 			/* Allow a buffer of two seconds drift on this so that ntpdate etc dont harass admins */
+ 			if (TIME.tv_sec < OLDTIME - 2)
+ 			{
+-				SNO->WriteToSnoMask('d', "\002EH?!\002 -- Time is flowing BACKWARDS in this dimension! Clock drifted backwards %lu secs.", (unsigned long)OLDTIME-TIME.tv_sec);
++				SNO->WriteToSnoMask('d', "\002EH?!\002 -- Time is flowing BACKWARDS in this dimension! Clock drifted backwards %lu secs.", (unsigned long)(OLDTIME-TIME.tv_sec));
+ 			}
+ 			else if (TIME.tv_sec > OLDTIME + 2)
+ 			{
+-				SNO->WriteToSnoMask('d', "\002EH?!\002 -- Time is jumping FORWARDS! Clock skipped %lu secs.", (unsigned long)TIME.tv_sec - OLDTIME);
++				SNO->WriteToSnoMask('d', "\002EH?!\002 -- Time is jumping FORWARDS! Clock skipped %lu secs.", (unsigned long)(TIME.tv_sec - OLDTIME));
+ 			}
+ 
+ 			OLDTIME = TIME.tv_sec;

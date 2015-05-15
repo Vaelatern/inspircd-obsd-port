@@ -1,0 +1,12 @@
+$OpenBSD$
+--- src/helperfuncs.cpp.orig	Wed May 13 03:55:00 2015
++++ src/helperfuncs.cpp	Wed May 13 03:55:12 2015
+@@ -571,7 +571,7 @@ void GenRandomHandler::Call(char *output, size_t max)
+ 			output[i] = uTemp;
+ 	}
+ #else
+-		output[i] = random();
++		output[i] = arc4random();
+ #endif
+ }
+ 
