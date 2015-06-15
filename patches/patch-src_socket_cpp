@@ -1,6 +1,6 @@
 $OpenBSD$
---- src/socket.cpp.orig	Fri May  8 04:33:44 2015
-+++ src/socket.cpp	Mon May 11 03:03:26 2015
+--- src/socket.cpp.orig	Thu Apr 16 17:17:02 2015
++++ src/socket.cpp	Mon Jun 15 18:54:22 2015
 @@ -223,7 +223,7 @@ std::string irc::sockets::sockaddrs::str() const
  	if (sa.sa_family == AF_INET)
  	{
@@ -10,12 +10,13 @@ $OpenBSD$
  	}
  	else if (sa.sa_family == AF_INET6)
  	{
-@@ -232,7 +232,8 @@ std::string irc::sockets::sockaddrs::str() const
+@@ -231,8 +231,8 @@ std::string irc::sockets::sockaddrs::str() const
+ 		if (!inet_ntop(AF_INET6, &in6.sin6_addr, buffer+1, MAXBUF - 10))
  			return "<unknown>"; // should never happen, buffer is large enough
  		int len = strlen(buffer);
- 		// no need for snprintf, buffer has at least 9 chars left, max short len = 5
+-		// no need for snprintf, buffer has at least 9 chars left, max short len = 5
 -		sprintf(buffer + len, "]:%u", ntohs(in6.sin6_port));
-+		// I am writing an OpenBSD Port. I disagree. But just that it's worth the time optimization.
++		// no need for snprintf, buffer has at least 9 chars left, max short len = 5. Still using it.
 +		snprintf(buffer + len, MAXBUF-len, "]:%u", ntohs(in6.sin6_port));
  	}
  	else
