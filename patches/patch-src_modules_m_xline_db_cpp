@@ -1,0 +1,29 @@
+$OpenBSD$
+--- src/modules/m_xline_db.cpp.orig	Tue Jun 16 12:08:18 2015
++++ src/modules/m_xline_db.cpp	Tue Jun 16 12:13:31 2015
+@@ -90,6 +90,7 @@ class ModuleXLineDB : public Module
+ 	bool WriteDatabase()
+ 	{
+ 		FILE *f;
++		int f_fd;
+ 
+ 		/*
+ 		 * We need to perform an atomic write so as not to fuck things up.
+@@ -99,7 +100,16 @@ class ModuleXLineDB : public Module
+ 		 */
+ 		ServerInstance->Logs->Log("m_xline_db",DEBUG, "xlinedb: Opening temporary database");
+ 		std::string xlinenewdbpath = xlinedbpath + ".new";
+-		f = fopen(xlinenewdbpath.c_str(), "w");
++		// Complying with the OpenBSD security guidlines.
++		f_fd = open(xlinenewdbpath.c_str(), (O_WRONLY | O_CREAT | O_EXCL), 0660);
++		if (f_fd < 0)
++		{
++			ServerInstance->Logs->Log("m_xline_db",DEBUG, "xlinedb: Cannot create database! %s (%d)", strerror(errno), errno);
++			ServerInstance->SNO->WriteToSnoMask('a', "database: cannot create new db: %s (%d)", strerror(errno), errno);
++			return false;
++		}
++
++		f = fdopen(f_fd, "w");
+ 		if (!f)
+ 		{
+ 			ServerInstance->Logs->Log("m_xline_db",DEBUG, "xlinedb: Cannot create database! %s (%d)", strerror(errno), errno);

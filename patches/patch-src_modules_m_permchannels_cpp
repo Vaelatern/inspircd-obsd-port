@@ -1,0 +1,29 @@
+$OpenBSD$
+--- src/modules/m_permchannels.cpp.orig	Thu Apr 16 17:17:02 2015
++++ src/modules/m_permchannels.cpp	Tue Jun 16 13:47:53 2015
+@@ -33,6 +33,7 @@ static std::string permchannelsconf;
+ static bool WriteDatabase(Module* mod, bool save_listmodes)
+ {
+ 	FILE *f;
++	int f_fd;
+ 
+ 	if (permchannelsconf.empty())
+ 	{
+@@ -47,7 +48,16 @@ static bool WriteDatabase(Module* mod, bool save_listm
+ 	 * So, let's write to a temporary file, flush and sync the FD, then rename the file..
+ 	 *		-- w00t
+ 	 */
+-	f = fopen(tempname.c_str(), "w");
++	// As per the OpenBSD porting safety guidelines, open a descriptor properly first.
++	f_fd = open(tempname.c_str(), (O_WRONLY | O_CREAT | O_EXCL), 0660);
++	if (f_fd < 0)
++	{
++		ServerInstance->Logs->Log("m_permchannels",DEFAULT, "permchannels: Cannot create database! %s (%d)", strerror(errno), errno);
++		ServerInstance->SNO->WriteToSnoMask('a', "database: cannot create new db: %s (%d)", strerror(errno), errno);
++		return false;
++	}
++
++	f = fdopen(f_fd, "w");
+ 	if (!f)
+ 	{
+ 		ServerInstance->Logs->Log("m_permchannels",DEFAULT, "permchannels: Cannot create database! %s (%d)", strerror(errno), errno);
