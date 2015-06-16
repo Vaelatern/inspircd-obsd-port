@@ -137,6 +137,7 @@ CONFIGURE_ARGS +=	--module-dir=/usr/local/share/inspircd/modules
 CONFIGURE_ARGS +=	--binary-dir=/usr/local/bin
 CONFIGURE_ARGS +=	--enable-gnutls
 CONFIGURE_ARGS +=	--enable-kqueue
+CONFIGURE_ARGS +=	--uid=_inspircd
 #CONFIGURE_ENV =	???
 
 # for gnu stuff
