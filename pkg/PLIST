@@ -1,0 +1,4 @@
+@comment $OpenBSD$
+%%SHARED%%
+bin/inspircd
+lib/inspircd/
