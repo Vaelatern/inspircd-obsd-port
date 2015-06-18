@@ -182,7 +182,7 @@ CONFIGURE_ARGS +=	--uid=_inspircd
 # The time gained is not worth it.
 #
 #NO_BUILD =		Yes
-#NO_TEST =		Yes
+NO_TEST =		Yes
 
 # Overrides for default values
 #
