@@ -131,7 +131,6 @@ GH_COMMIT =		1548078e5dc304814669cd1ea052f92be9d1ac40
 CONFIGURE_STYLE =	gnu
 #CONFIGURE_SCRIPT =	??? (if other than configure)
 CONFIGURE_ARGS +=	--disable-interactive
-CONFIGURE_ARGS +=	--prefix=/var/run
 CONFIGURE_ARGS +=	--config-dir=/etc/inspircd
 CONFIGURE_ARGS +=	--log-dir=/var/log/inspircd
 CONFIGURE_ARGS +=	--data-dir=/var/db
