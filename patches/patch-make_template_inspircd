@@ -1,0 +1,12 @@
+$OpenBSD$
+--- make/template/inspircd.orig	Thu Jun 18 19:10:10 2015
++++ make/template/inspircd	Thu Jun 18 19:10:34 2015
+@@ -34,7 +34,7 @@ my $confpath	=	"@CONFIG_DIR@/";
+ my $binpath	=	"@BINARY_DIR@";
+ my $runpath	=	"@BASE_DIR@";
+ my $datadir	=       "@DATA_DIR@";
+-my $valgrindlogpath	=	"$basepath/valgrindlogs";
++my $valgrindlogpath	=	"/var/log/valgrindlogs";
+ my $executable	=	"@EXECUTABLE@";
+ my $version	=	"@VERSION@";
+ my $uid = "@UID@";
