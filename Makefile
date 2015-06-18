@@ -65,6 +65,7 @@ PERMIT_PACKAGE_CDROM =	Yes
 #PERMIT_DISTFILES_FTP =	Yes | Reason if No
 
 # "make port-lib-depends-check" can help
+WANTLIB += m stdc++
 #WANTLIB =		???
 
 # where the source files and patches can be fetched
