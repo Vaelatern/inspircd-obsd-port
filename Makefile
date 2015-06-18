@@ -131,6 +131,7 @@ GH_COMMIT =		1548078e5dc304814669cd1ea052f92be9d1ac40
 CONFIGURE_STYLE =	gnu
 #CONFIGURE_SCRIPT =	??? (if other than configure)
 CONFIGURE_ARGS +=	--disable-interactive
+CONFIGURE_ARGS +=	--prefix=/var/run
 CONFIGURE_ARGS +=	--config-dir=/etc/inspircd
 CONFIGURE_ARGS +=	--log-dir=/var/log/inspircd
 CONFIGURE_ARGS +=	--data-dir=/var/db
@@ -190,7 +191,7 @@ NO_TEST =		Yes
 #LDFLAGS =		???
 MAKE_FILE =		BSDmakefile
 #PKG_ARCH =		??? (* for arch-independent packages)
-#WRKDIST =		/usr/ports/pobj/inspircd-2.0.19/inspircd-2.0.19 #if other than ${WRKDIR}/${DISTNAME}
+#WRKDIST =		/usr/ports/pobj/inspircd-2.0.19/inspircd-2.0.19
 #WRKSRC =		??? if other than ${WRKDIST}
 #WRKBUILD =		??? if other than ${WRKSRC}
 #WRKCONF =		??? if other than ${WRKBUILD}

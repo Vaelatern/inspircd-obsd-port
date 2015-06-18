@@ -1,5 +1,3 @@
-$OpenBSD$
-
 InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux,
 BSD, Windows and Mac OS X systems which was created from scratch to be stable,
 modern and lightweight.
