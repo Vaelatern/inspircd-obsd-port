@@ -6,8 +6,9 @@ $OpenBSD$
  	fi
  	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) $(BASE)
 -	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) $(BASE)/data
+-	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) $(BASE)/logs
 +	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) $(DATPATH)
- 	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) $(BASE)/logs
++	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) /var/log
  	@-$(INSTALL) -d -m $(INSTMODE_DIR) $(BINPATH)
 -	@-$(INSTALL) -d -m $(INSTMODE_DIR) $(CONPATH)/examples/aliases
 -	@-$(INSTALL) -d -m $(INSTMODE_DIR) $(CONPATH)/examples/modules
@@ -31,9 +32,12 @@ $OpenBSD$
  	@echo ""
  	@echo "*************************************"
  	@echo "*        INSTALL COMPLETE!          *"
-@@ -247,7 +247,7 @@ install: target
+@@ -245,9 +245,9 @@ install: target
+ 	@echo '  Binaries:' $(BINPATH)
+ 	@echo '  Modules:' $(MODPATH)
  	@echo '  Data:' $(DATPATH)
- 	@echo 'To start the ircd, run:' $(BASE)/inspircd start
+-	@echo 'To start the ircd, run:' $(BASE)/inspircd start
++	@echo 'To start the ircd, run:' $(BINPATH)/inspircd start
  	@echo 'Remember to create your config file:' $(CONPATH)/inspircd.conf
 -	@echo 'Examples are available at:' $(CONPATH)/examples/
 +	@echo 'Examples are available at:' /usr/local/share/inspircd/examples/
