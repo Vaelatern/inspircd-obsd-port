@@ -135,7 +135,7 @@ CONFIGURE_ARGS +=	--log-dir=/var/log/inspircd
 #CONFIGURE_ARGS +=	--data-dir=???
 CONFIGURE_ARGS +=	--module-dir=/usr/local/share/inspircd/modules
 CONFIGURE_ARGS +=	--binary-dir=/usr/local/bin
-CONFIGURE_ARGS +=	--enable-gnutls
+CONFIGURE_ARGS +=	--enable-openssl
 CONFIGURE_ARGS +=	--enable-kqueue
 CONFIGURE_ARGS +=	--uid=_inspircd
 #CONFIGURE_ENV =	???
