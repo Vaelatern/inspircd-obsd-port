@@ -1,4 +1,50 @@
 @comment $OpenBSD$
+@newgroup _inspircd:750
+@newuser _inspircd:750:_inspircd:daemon:InspIRCd Daemon:/nonexistant:/sbin/nologin
 %%SHARED%%
 bin/inspircd
 lib/inspircd/
+@bin libexec/inspircd
+share/inspircd/
+@sample ${SYSCONFDIR}/inspircd/
+share/inspircd/censor.conf.example
+@sample ${SYSCONFDIR}/inspircd/censor.conf
+share/inspircd/filter.conf.example
+@sample ${SYSCONFDIR}/inspircd/filter.conf
+share/inspircd/helpop-full.conf.example
+@sample ${SYSCONFDIR}/inspircd/helpop-full.conf
+share/inspircd/helpop.conf.example
+@sample ${SYSCONFDIR}/inspircd/helpop.conf
+share/inspircd/inspircd.conf.example
+@sample ${SYSCONFDIR}/inspircd/inspircd.conf
+share/inspircd/links.conf.example
+@sample ${SYSCONFDIR}/inspircd/links.conf
+share/inspircd/modules.conf.example
+@sample ${SYSCONFDIR}/inspircd/modules.conf
+share/inspircd/motd.txt.example
+@sample ${SYSCONFDIR}/inspircd/motd.txt
+share/inspircd/opermotd.txt.example
+@sample ${SYSCONFDIR}/inspircd/opermotd.txt
+share/inspircd/opers.conf.example
+@sample ${SYSCONFDIR}/inspircd/opers.conf
+share/inspircd/quotes.txt.example
+@sample ${SYSCONFDIR}/inspircd/quotes.txt
+share/inspircd/rules.txt.example
+@sample ${SYSCONFDIR}/inspircd/rules.txt
+share/inspircd/aliases/
+@sample ${SYSCONFDIR}/inspircd/aliases/
+share/inspircd/aliases/anope.conf.example
+@sample ${SYSCONFDIR}/inspircd/aliases/anope.conf
+share/inspircd/aliases/atheme.conf.example
+@sample ${SYSCONFDIR}/inspircd/aliases/atheme.conf
+share/inspircd/modules/
+@sample ${SYSCONFDIR}/inspircd/modules/
+share/inspircd/modules/charybdis.conf.example
+@sample ${SYSCONFDIR}/inspircd/modules/charybdis.conf
+share/inspircd/modules/unrealircd.conf.example
+@sample ${SYSCONFDIR}/inspircd/modules/unrealircd.conf
+!%%SHARED%%
+@cwd /
+@owner _inspircd
+@group _inspircd
+@dir var/log/inspircd/
