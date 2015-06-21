@@ -45,7 +45,7 @@ CATEGORIES =		net
 # If you no longer use the port, or are unwilling/unable to handle issues
 # in a timely manner, *leave the field blank*.
 # Default value is ports@openbsd.org, no need to fill in
-#MAINTAINER =		???
+MAINTAINER =		Toyam Cox <aviator45003@gmail.com>
 
 # Licensing:  This determines what we can distribute.
 # When you determine the license type, make sure to look at ALL distfiles.
