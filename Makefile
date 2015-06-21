@@ -80,7 +80,7 @@ WANTLIB += m stdc++
 GH_ACCOUNT =		inspircd
 GH_PROJECT =		inspircd
 GH_TAGNAME =		v2.0.19
-GH_COMMIT =		1548078e5dc304814669cd1ea052f92be9d1ac40
+#GH_COMMIT =		1548078e5dc304814669cd1ea052f92be9d1ac40
 
 # if more master sites are needed...
 #MASTER_SITES0 =
