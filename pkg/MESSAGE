@@ -1,1 +1,1 @@
-You should configure the files in /etc/inspircd/ before running.
+You need to configure the files in /etc/inspircd/ before running.
