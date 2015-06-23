@@ -48,3 +48,5 @@ share/inspircd/modules/unrealircd.conf.example
 @owner _inspircd
 @group _inspircd
 @dir var/log/inspircd/
+@comment Otherwise inspircd doesn't have write access to /var/run
+@extra var/run/inspircd.pid

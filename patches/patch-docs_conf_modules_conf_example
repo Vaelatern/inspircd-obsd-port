@@ -1,0 +1,39 @@
+$OpenBSD$
+--- docs/conf/modules.conf.example.orig	Tue Jun 23 01:25:30 2015
++++ docs/conf/modules.conf.example	Tue Jun 23 01:27:34 2015
+@@ -315,7 +315,7 @@
+ # specify some censor tags. See also:                                 #
+ # http://wiki.inspircd.org/Modules/censor                             #
+ #
+-#<include file="conf/examples/censor.conf.example">
++#<include file="/etc/inspircd/censor.conf">
+ 
+ #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+ # CGI:IRC module: Adds support for automatic host changing in CGI:IRC
+@@ -774,7 +774,7 @@
+ # specify below the path to the filter.conf file, or define some      #
+ # <filter> tags.                                                      #
+ #                                                                     #
+-#<include file="conf/examples/filter.conf.example">
++#<include file="/etc/inspircd/filter.conf">
+ 
+ #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+ # Gecos ban: Implements extended ban 'r', which stops anyone matching
+@@ -830,7 +830,7 @@
+ #                                                                     #
+ # If you specify to use the m_helpop.so module, then specify below    #
+ # the path to the helpop.conf file.                                   #
+-#<include file="conf/examples/inspircd.helpop-full.example">
++#<include file="/etc/inspircd/inspircd.helpop-full">
+ 
+ #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+ # Hide chans module: Allows users to hide their channels list from non-
+@@ -1277,7 +1277,7 @@
+ #                 Read the comment above <connect:allowmotdcolors> in #
+ #                 inspircd.conf.example for details.                  #
+ #                                                                     #
+-#<opermotd file="conf/examples/opermotd.txt.example" onoper="yes" processcolors="false">
++#<opermotd file="/etc/inspircd/opermotd.txt" onoper="yes" processcolors="false">
+ 
+ #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+ # Override module: Adds support for oper override.
