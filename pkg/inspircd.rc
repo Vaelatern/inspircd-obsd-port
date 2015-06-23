@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# $OpenBSD: inspircd,v 1.6 2015/06/23 16:45:51 avicove Exp $
+
+daemon="${TRUEPREFIX}/usr/local/bin/inspircd"
+#daemon_flags=""
+#daemon_user="root"
+#daemon_timeout="30"
+
+. /etc/rc.d/rc.subr
+
+#pexp="${daemon}${daemon_flags:+ ${daemon_flags}}"
+#rc_bg= # (undefined)
+#rc_reload= # (undefined)
+#rc_usercheck=YES
+
+#rc_pre() {
+#}
+
+rc_start() {
+	${rcexec} "${daemon} ${daemon_flags} start"
+}
+
+rc_check() {
+	pgrep -q inspircd
+}
+
+rc_reload() {
+	${rcexec} "${daemon} ${daemon_flags} rehash"
+}
+
+rc_stop() {
+	${rcexec} "${daemon} ${daemon_flags} stop"
+}
+
+#rc_post() {
+#}
+
+rc_cmd $1
