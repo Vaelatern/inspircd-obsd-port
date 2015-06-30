@@ -14,8 +14,10 @@ daemon="${TRUEPREFIX}/usr/local/bin/inspircd"
 #rc_reload= # (undefined)
 #rc_usercheck=YES
 
-#rc_pre() {
-#}
+rc_pre() {
+	${rcexec} "touch /var/run/inspircd.pid"
+	${rcexec} "chown -R _inspircd:_inspircd /var/run/inspircd.pid"
+}
 
 rc_start() {
 	${rcexec} "${daemon} ${daemon_flags} start"
