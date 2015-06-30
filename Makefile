@@ -133,7 +133,7 @@ CONFIGURE_STYLE =	gnu
 CONFIGURE_ARGS +=	--disable-interactive
 CONFIGURE_ARGS +=	--config-dir=/etc/inspircd
 CONFIGURE_ARGS +=	--log-dir=/var/log/inspircd
-CONFIGURE_ARGS +=	--data-dir=/var/db
+CONFIGURE_ARGS +=	--data-dir=/var/db/inspircd
 CONFIGURE_ARGS +=	--module-dir=/usr/local/lib/inspircd
 CONFIGURE_ARGS +=	--binary-dir=/usr/local/libexec
 CONFIGURE_ARGS +=	--enable-openssl

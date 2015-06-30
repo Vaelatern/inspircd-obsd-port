@@ -48,6 +48,7 @@ share/inspircd/modules/unrealircd.conf.example
 @owner _inspircd
 @group _inspircd
 @dir var/log/inspircd/
+@dir var/db/inspircd/
 @owner
 @group
 @rcscript ${RCDIR}/inspircd
